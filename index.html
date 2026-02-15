@@ -1,207 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomExecutives | Stewarding Homes with Executive Standard</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HomExecutives — Stewarding Homes with Executive Standard</title>
+  <meta name="description" content="HomExecutives is an integrated home solutions company in Zaria, Nigeria — stewarding homes with executive standard through security, maintenance, education, deliveries, market, and home care." />
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    scroll-behavior: smooth;
-    color: #333;
-}
+  <style>
+    :root{
+      --yellow:#FFD700;
+      --red:#C8102E;
+      --ash:#B2B2B2;
+      --white:#FFFFFF;
+      --ink:#1f1f1f;
+      --muted:#555;
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.10);
+      --radius: 20px;
+      --radius2: 28px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: #fff;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.08);
+      backdrop-filter: blur(10px);
+    }
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,215,0,.90);
+      border-bottom:1px solid rgba(0,0,0,.08);
+      backdrop-filter: blur(12px);
+    }
+    .topbar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 0;
+      gap:10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brandmark{
+      width:38px;height:38px;border-radius:12px;
+      background: var(--red);
+      display:grid;place-items:center;
+      color:#fff;
+      box-shadow: 0 10px 20px rgba(200,16,46,.25);
+      font-weight:900;
+    }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(0,0,0,.08);
+      font-weight:700;
+      font-size:13px;
+    }
+    .nav a:hover{transform: translateY(-1px)}
+    .hero{
+      background: radial-gradient(1200px 500px at 20% 10%, rgba(255,255,255,.65), rgba(255,255,255,0)) , var(--yellow);
+      padding:70px 0 40px;
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:20px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns:1fr}
+    }
+    h1{
+      margin:0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:14px 0 0;
+      font-size: 18px;
+      color: #222;
+      max-width: 62ch;
+    }
+    .doctrine{
+      margin:16px 0 0;
+      padding:14px 16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: var(--shadow);
+      color: #222;
+    }
+    .btnRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 999px;
+      border:1px solid rgba(0,0,0,.10);
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition:.2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btnPrimary{background: var(--red); color:#fff; box-shadow: 0 14px 26px rgba(200,16,46,.24)}
+    .btnPrimary:hover{transform: translateY(-1px)}
+    .btnGhost{background: rgba(255,255,255,.7)}
+    .btnGhost:hover{transform: translateY(-1px)}
+    .sideCard{
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column; justify-content:space-between;
+      min-height: 100%;
+    }
+    .sideCard h3{margin:0 0 8px}
+    .mini{color:var(--muted);margin:0;font-size:14px;line-height:1.5}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      font-weight:800;
+      font-size:12px;
+    }
 
-/* Brand Colors */
-:root {
-    --yellow: #FFD700;
-    --red: #C8102E;
-    --ash: #B2B2B2;
-    --dark: #222;
-}
+    section{padding:54px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom:18px;
+    }
+    .sectionTitle h2{margin:0;font-size:28px;letter-spacing:-.4px}
+    .sectionTitle p{margin:0;color:var(--muted);max-width:70ch}
 
-/* Hero */
-.hero {
-    background: var(--yellow);
-    text-align: center;
-    padding: 100px 20px;
-}
+    /* Service buttons */
+    .svcGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    @media (max-width: 900px){ .svcGrid{grid-template-columns:1fr} }
+    .svcBtn{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:16px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: var(--shadow);
+      text-decoration:none;
+      transition:.2s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .svcBtn:hover{transform: translateY(-2px)}
+    .icon{
+      width:44px;height:44px;border-radius:16px;
+      background: rgba(255,215,0,.35);
+      border:1px solid rgba(0,0,0,.08);
+      display:grid;place-items:center;
+      font-size:22px;
+      flex:0 0 auto;
+    }
+    .svcBtn h3{margin:0;font-size:16px}
+    .svcBtn p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+    .arrow{
+      position:absolute; right:14px; top:14px;
+      width:32px;height:32px;border-radius:999px;
+      display:grid;place-items:center;
+      background: rgba(200,16,46,.10);
+      border:1px solid rgba(200,16,46,.20);
+      font-weight:900;
+      color: var(--red);
+    }
 
-.hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-}
+    /* Detail panels */
+    .panel{
+      margin-top:18px;
+      background: #fff;
+      border:1px solid rgba(0,0,0,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelHead{
+      padding:18px 18px 0;
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .panelHead h3{margin:0;font-size:20px}
+    .panelBody{
+      padding:14px 18px 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){ .panelBody{grid-template-columns:1fr} }
+    .list{
+      margin:0; padding-left:18px; color:#222;
+    }
+    .list li{margin:8px 0}
+    .stew{
+      background: rgba(255,215,0,.20);
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding:12px 14px;
+      color:#222;
+    }
+    .ctaBar{
+      padding:14px 18px 18px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      border-top:1px solid rgba(0,0,0,.08);
+      background: rgba(178,178,178,.18);
+    }
 
-.tagline {
-    font-style: italic;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-}
+    /* Why choose us */
+    .whyGrid{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+    }
+    @media (max-width: 900px){ .whyGrid{grid-template-columns:1fr} }
+    .whyCard{
+      background:#fff; border:1px solid rgba(0,0,0,.10);
+      border-radius: var(--radius); padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .whyCard b{display:block;margin-top:10px}
+    .whyCard p{margin:8px 0 0;color:var(--muted);line-height:1.5}
 
-.btn {
-    padding: 12px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px;
-    display: inline-block;
-}
+    /* Contact */
+    .contactBox{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 900px){ .contactGrid{grid-template-columns:1fr} }
 
-.btn-red {
-    background: var(--red);
-    color: white;
-}
-
-.btn-light {
-    background: white;
-    color: var(--dark);
-}
-
-/* Sections */
-.section {
-    padding: 70px 20px;
-    text-align: center;
-}
-
-.section-ash {
-    background: var(--ash);
-}
-
-/* Services Grid */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    transition: 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.note {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #555;
-}
-
-/* Footer */
-.footer {
-    background: var(--yellow);
-    padding: 40px 20px;
-    text-align: center;
-    font-size: 0.95rem;
-}
-</style>
+    footer{
+      padding:30px 0;
+      background: var(--yellow);
+      border-top: 1px solid rgba(0,0,0,.08);
+      text-align:center;
+    }
+    footer p{margin:6px 0;color:#222}
+    .footSmall{font-size:13px;color:#333}
+  </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <h1>HomExecutives</h1>
-    <p class="tagline">Stewarding Homes with Executive Standard.</p>
-    <a href="#services" class="btn btn-red">Our Services</a>
-    <a href="#contact" class="btn btn-light">Contact Us</a>
-</section>
-
-<!-- ABOUT -->
-<section class="section section-ash">
-    <h2>About Us</h2>
-    <p>
-        HomExecutives delivers premium home solutions designed for comfort,
-        efficiency, and long-term value. We treat every home as a trust—not just a property.
-        Our work is measured by durability, not speed.
-    </p>
-
-    <p style="margin-top:30px; max-width:800px; margin-left:auto; margin-right:auto;">
-        HomExecutives exists because homes deserve more than quick fixes.
-        We believe every structure is a trust. Every client is a partner.
-        Every job is a testimony. We do not build for applause.
-        We build for endurance. This is stewardship. This is our standard.
-    </p>
-</section>
-
-<!-- SERVICES -->
-<section class="section" id="services">
-    <h2>Our Services</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>🏠 Property Maintenance</h3>
-            <p class="note">Prevention over repair. Order over neglect.</p>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <div class="brandmark">H</div>
+          <div>
+            <div style="font-size:14px; font-weight:900; line-height:1;">HomExecutives</div>
+            <div style="font-size:12px; font-weight:800; opacity:.85;">Stewarding Homes with Executive Standard.</div>
+          </div>
         </div>
 
-        <div class="card">
-            <h3>🛠 Renovation & Repairs</h3>
-            <p class="note">Restoring what others abandon.</p>
+        <nav class="nav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#standards">Standards</a>
+          <a href="#recruitment">Recruitment</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div>
+          <div class="pill">🏡 <b>HomExecutives</b> <span style="opacity:.8;">— integrated home solutions</span></div>
+          <h1 style="margin-top:14px;">Stewarding Homes<br/>with Executive Standard.</h1>
+          <p class="sub">
+            We treat every home as a trust—not just a property.
+            Our work is measured by durability, not speed.
+          </p>
+
+          <div class="doctrine">
+            <b>What you’ll notice:</b> clear process, visible accountability, and execution you can trust.
+            No shortcuts. No hidden costs. Just disciplined service.
+          </div>
+
+          <div class="btnRow">
+            <a class="btn btnPrimary" href="#services">Explore Services</a>
+            <a class="btn btnGhost" href="https://wa.me/2349038129138">Chat on WhatsApp</a>
+            <a class="btn btnGhost" href="tel:+2348136805462">Call Now</a>
+          </div>
         </div>
 
-        <div class="card">
-            <h3>🎨 Interior Finishing</h3>
-            <p class="note">Details are not decoration—they are discipline.</p>
-        </div>
+        <aside class="sideCard">
+          <div>
+            <h3 style="margin:0 0 6px;">Executive Home Support — One Brand</h3>
+            <p class="mini">Security • Maintenance • Education • Deliveries • Market • Home Care</p>
 
-        <div class="card">
-            <h3>🧹 Home Care Services</h3>
-            <p class="note">Care is a covenant, not a chore.</p>
-        </div>
+            <div class="chips">
+              <span class="chip">Faithful Stewardship</span>
+              <span class="chip">Long-Term Value</span>
+              <span class="chip">Transparent Execution</span>
+            </div>
+          </div>
 
-        <div class="card">
-            <h3>📦 Property Management</h3>
-            <p class="note">We manage as owners would.</p>
-        </div>
+          <div style="margin-top:16px">
+            <p class="mini" style="margin:0 0 10px"><b>Service Area:</b> Zaria, Nigeria</p>
+            <a class="btn btnPrimary" href="#contact" style="width:100%;">Request a Quote</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
 
-        <div class="card">
-            <h3>📍 Site Supervision</h3>
-            <p class="note">Presence over promises. Accountability on site.</p>
+  <!-- SERVICES HUB -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Services (Tap a Service)</h2>
+        <p>Each service button opens what we offer, how we execute, and how you get started.</p>
+      </div>
+
+      <div class="svcGrid">
+        <a class="svcBtn" href="#svc-security">
+          <div class="icon">🛡️</div>
+          <div>
+            <h3>HomeLine Security</h3>
+            <p>Security gadgets, installations, and home protection setup.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="svcBtn" href="#svc-homeservices">
+          <div class="icon">🛠️</div>
+          <div>
+            <h3>HomeServices</h3>
+            <p>Maintenance, repairs, cleaning — reliable home upkeep.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="svcBtn" href="#svc-education">
+          <div class="icon">📚</div>
+          <div>
+            <h3>HomeEducation</h3>
+            <p>Tutoring and structured support for learners at home.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="svcBtn" href="#svc-deliveries">
+          <div class="icon">📦</div>
+          <div>
+            <h3>HomeDeliveries & Logistics</h3>
+            <p>Reliable pickups and deliveries for households and estates.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="svcBtn" href="#svc-market">
+          <div class="icon">🥬</div>
+          <div>
+            <h3>HomeMarket</h3>
+            <p>Fresh groceries and local produce supply connection.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="svcBtn" href="#svc-care">
+          <div class="icon">🧹</div>
+          <div>
+            <h3>HomeCare</h3>
+            <p>Housekeeping and personal care support—done professionally.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+      </div>
+
+      <!-- SERVICE DETAIL: SECURITY -->
+      <div class="panel" id="svc-security">
+        <div class="panelHead">
+          <h3>🛡️ HomeLine Security</h3>
+          <span class="pill"><b>Stewardship:</b> prevention over regret</span>
         </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> We secure homes with clarity and accountability—no guesswork, no half-installations.</div>
+            <ul class="list">
+              <li>CCTV cameras (indoor/outdoor), DVR/NVR setup</li>
+              <li>Smart locks, motion sensors, alarms</li>
+              <li>Perimeter lighting & basic access control</li>
+              <li>Security assessment + installation plan</li>
+            </ul>
+          </div>
+          <div>
+            <b>Get the right gadget (not waste):</b>
+            <ul class="list">
+              <li>We recommend options by budget and risk level</li>
+              <li>We install and test before handover</li>
+              <li>We train you on usage + basic maintenance</li>
+            </ul>
+
+            <div class="stew" style="margin-top:10px;"><b>One-line standard:</b> Presence over promises. Accountability on site.</div>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20need%20HomeLine%20Security%20for%20my%20home.%20Please%20advise%20me%20on%20gadgets%20and%20installation.">Request Security Assessment</a>
+          <a class="btn btnGhost" href="#recruitment">Recruitment (Security Techs)</a>
+          <a class="btn btnGhost" href="tel:+2348136805462">Call Now</a>
+        </div>
+      </div>
+
+      <!-- SERVICE DETAIL: HOMESERVICES -->
+      <div class="panel" id="svc-homeservices">
+        <div class="panelHead">
+          <h3>🛠️ HomeServices (Maintenance • Repairs • Cleaning)</h3>
+          <span class="pill"><b>Stewardship:</b> order over neglect</span>
+        </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> We fix with discipline—clean workmanship, clear scope, and durable results.</div>
+            <ul class="list">
+              <li>General repairs (doors, fittings, fixtures)</li>
+              <li>Routine maintenance checks</li>
+              <li>Professional cleaning services</li>
+              <li>Minor electrical/plumbing coordination</li>
+            </ul>
+          </div>
+          <div>
+            <b>How it works:</b>
+            <ul class="list">
+              <li>Inspection → clear scope → agreed cost</li>
+              <li>Execution with check-ins</li>
+              <li>Handover + after-care guidance</li>
+            </ul>
+            <div class="stew" style="margin-top:10px;"><b>One-line standard:</b> Prevention over repair. Order over neglect.</div>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20need%20HomeServices%20(maintenance/repairs/cleaning).%20Please%20help%20me%20book%20an%20inspection.">Book Maintenance / Cleaning</a>
+          <a class="btn btnGhost" href="tel:+2348136805462">Call Now</a>
+        </div>
+      </div>
+
+      <!-- SERVICE DETAIL: EDUCATION -->
+      <div class="panel" id="svc-education">
+        <div class="panelHead">
+          <h3>📚 HomeEducation (Tutoring • Homeschool Support)</h3>
+          <span class="pill"><b>Stewardship:</b> structure builds outcomes</span>
+        </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> Learning is guided by structure, not noise—consistent sessions and measurable progress.</div>
+            <ul class="list">
+              <li>Home tutoring (primary/secondary support)</li>
+              <li>Homework support & reading improvement</li>
+              <li>Study routines + progress tracking</li>
+            </ul>
+          </div>
+          <div>
+            <b>What you get:</b>
+            <ul class="list">
+              <li>Assessment → plan → weekly schedule</li>
+              <li>Progress updates for parents/guardians</li>
+              <li>Discipline-first learning environment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20need%20HomeEducation%20(tutoring).%20Please%20help%20me%20start%20with%20an%20assessment%20and%20schedule.">Start HomeEducation</a>
+        </div>
+      </div>
+
+      <!-- SERVICE DETAIL: DELIVERIES -->
+      <div class="panel" id="svc-deliveries">
+        <div class="panelHead">
+          <h3>📦 HomeDeliveries & Logistics</h3>
+          <span class="pill"><b>Stewardship:</b> reliability is respect</span>
+        </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> We deliver with accountability—clear pickup, clear handover, clear communication.</div>
+            <ul class="list">
+              <li>Parcel pickup and delivery</li>
+              <li>Home errands support</li>
+              <li>Estate/community deliveries (where applicable)</li>
+            </ul>
+          </div>
+          <div>
+            <b>How it works:</b>
+            <ul class="list">
+              <li>Send details → confirm cost → dispatch</li>
+              <li>Status updates by WhatsApp</li>
+              <li>Proof of delivery (when needed)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20need%20HomeDeliveries%20and%20Logistics.%20Here%20are%20my%20pickup%20and%20drop%20details:">Book a Delivery</a>
+        </div>
+      </div>
+
+      <!-- SERVICE DETAIL: MARKET -->
+      <div class="panel" id="svc-market">
+        <div class="panelHead">
+          <h3>🥬 HomeMarket (Groceries • Local Produce)</h3>
+          <span class="pill"><b>Stewardship:</b> quality supply, clean handling</span>
+        </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> We source responsibly and deliver reliably—freshness and trust first.</div>
+            <ul class="list">
+              <li>Fresh groceries and produce supply</li>
+              <li>Local farmer/vendor connection</li>
+              <li>Household restock support</li>
+            </ul>
+          </div>
+          <div>
+            <b>How to order:</b>
+            <ul class="list">
+              <li>Send list → confirm options → delivery time</li>
+              <li>Transparent pricing; no hidden costs</li>
+              <li>Delivery coordination via WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20want%20to%20order%20from%20HomeMarket.%20Here%20is%20my%20grocery%20list:">Order Groceries</a>
+        </div>
+      </div>
+
+      <!-- SERVICE DETAIL: HOMECARE -->
+      <div class="panel" id="svc-care">
+        <div class="panelHead">
+          <h3>🧹 HomeCare (Housekeeping • Personal Care Support)</h3>
+          <span class="pill"><b>Stewardship:</b> care is covenant</span>
+        </div>
+        <div class="panelBody">
+          <div>
+            <div class="stew"><b>Standard:</b> We serve homes with dignity, discretion, and consistent quality.</div>
+            <ul class="list">
+              <li>Housekeeping and routine home support</li>
+              <li>Care support (as defined by client needs)</li>
+              <li>Scheduled visits and accountability</li>
+            </ul>
+          </div>
+          <div>
+            <b>What you get:</b>
+            <ul class="list">
+              <li>Clear role definition + service checklist</li>
+              <li>Consistency and quality control</li>
+              <li>Respect for home, people, and privacy</li>
+            </ul>
+            <div class="stew" style="margin-top:10px;"><b>One-line standard:</b> Care is a covenant, not a chore.</div>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20need%20HomeCare%20services.%20Please%20help%20me%20choose%20a%20schedule%20and%20scope.">Request HomeCare</a>
+        </div>
+      </div>
 
     </div>
-</section>
+  </section>
 
-<!-- WHY CHOOSE US -->
-<section class="section section-ash">
-    <h2>Why Choose Us</h2>
+  <!-- STANDARDS -->
+  <section id="standards" style="background:rgba(178,178,178,.20); border-top:1px solid rgba(0,0,0,.08); border-bottom:1px solid rgba(0,0,0,.08);">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Our Standard</h2>
+        <p>Not slogans—how we execute, how we price, and how we protect the client’s trust.</p>
+      </div>
 
-    <p>✔ Faithful Stewardship</p>
-    <p>✔ Long-Term Value</p>
-    <p>✔ Transparent Execution</p>
-</section>
+      <div class="whyGrid">
+        <div class="whyCard">
+          <div class="icon" style="background:rgba(200,16,46,.12)">✔</div>
+          <b>Faithful Stewardship</b>
+          <p>We handle homes the way owners would—carefully, responsibly, and with respect.</p>
+        </div>
+        <div class="whyCard">
+          <div class="icon" style="background:rgba(200,16,46,.12)">⏳</div>
+          <b>Long-Term Value</b>
+          <p>We prioritize durability over speed—work that holds up, not work that fades.</p>
+        </div>
+        <div class="whyCard">
+          <div class="icon" style="background:rgba(200,16,46,.12)">🧾</div>
+          <b>Transparent Execution</b>
+          <p>Clear scope, clear cost, clear delivery. No hidden charges. No surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
-    <h2>Contact Us</h2>
+  <!-- RECRUITMENT -->
+  <section id="recruitment">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Recruitment</h2>
+        <p>We build with accountable professionals. If you work with integrity, you can apply.</p>
+      </div>
 
-    <p style="margin-bottom:20px;">
-        We do not take shortcuts. We do not hide costs.
-        If you are ready to build with integrity, reach out.
-    </p>
+      <div class="panel">
+        <div class="panelBody">
+          <div>
+            <b>Who we recruit (as needed):</b>
+            <ul class="list">
+              <li>Security installers / technicians</li>
+              <li>Cleaners & home service assistants</li>
+              <li>Maintenance support professionals</li>
+              <li>Logistics riders/dispatch support</li>
+              <li>Tutors (HomeEducation)</li>
+            </ul>
+          </div>
+          <div>
+            <div class="stew"><b>Recruitment Standard:</b> competence, integrity, respect for homes, and accountability.</div>
+            <ul class="list">
+              <li>Clear role expectations</li>
+              <li>Work discipline and client respect</li>
+              <li>Reliability and communication</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctaBar">
+          <a class="btn btnPrimary" href="https://wa.me/2349038129138?text=Hello%20HomExecutives.%20I%20want%20to%20apply%20for%20recruitment.%20My%20name%20is%20____.%20My%20skill%20is%20____.%20My%20location%20is%20____.%20">Apply via WhatsApp</a>
+          <a class="btn btnGhost" href="tel:+2348136805462">Call Recruitment Line</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p>@Corner Bie’ye Before ABUTH, Sokoto Road, Zaria, Nigeria</p>
-    <p>📞 +2348136805462</p>
-    <p>💬 WhatsApp: +2349038129138</p>
-    <p>✉️ arinonebusiness@gmail.com</p>
+  <!-- CONTACT -->
+  <section id="contact" style="background:rgba(255,215,0,.35); border-top:1px solid rgba(0,0,0,.08);">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Contact</h2>
+        <p>We do not take shortcuts. We do not hide costs. If you are ready to build with integrity, reach out.</p>
+      </div>
 
-    <a href="https://wa.me/2349038129138" class="btn btn-red">Chat on WhatsApp</a>
-</section>
+      <div class="contactBox">
+        <div class="contactGrid">
+          <div>
+            <p style="margin:0 0 8px;"><b>Head Office</b></p>
+            <p style="margin:0;color:var(--muted);line-height:1.6;">
+              @Corner Bie’ye Before ABUTH,<br/>
+              Sokoto Road, Zaria, Nigeria.
+            </p>
 
-<!-- FOOTER -->
-<div class="footer">
-    © 2026 HomExecutives — Stewarding Homes with Executive Standard.
-</div>
+            <div class="btnRow" style="margin-top:14px;">
+              <a class="btn btnPrimary" href="https://wa.me/2349038129138">Chat on WhatsApp</a>
+              <a class="btn btnGhost" href="tel:+2348136805462">Call: +2348136805462</a>
+            </div>
+          </div>
+
+          <div>
+            <p style="margin:0 0 8px;"><b>Email</b></p>
+            <p style="margin:0;color:var(--muted);line-height:1.6;">
+              <a href="mailto:arinonebusiness@gmail.com">arinonebusiness@gmail.com</a>
+            </p>
+
+            <div class="stew" style="margin-top:12px;">
+              <b>Quick Request Template:</b><br/>
+              “My service is _____. My location is _____. My budget range is _____. When can you inspect?”
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footSmall" style="text-align:center;margin-top:14px;">
+        Your Home Solutions. Executive Standard.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><b>HomExecutives</b> — Stewarding Homes with Executive Standard.</p>
+      <p class="footSmall">© 2026 HomExecutives • @Corner Bie’ye Before ABUTH, Sokoto Road, Zaria • Calls: +2348136805462 • WhatsApp: +2349038129138</p>
+      <p class="footSmall">Email: arinonebusiness@gmail.com • Your Home Solutions. Executive Standard.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
